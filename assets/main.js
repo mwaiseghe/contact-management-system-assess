@@ -81,7 +81,8 @@ class Contacts {
                 <td>${contact.name}</td>
                 <td>${contact.phone}</td>
                 <td>${contact.email}</td>
-                <td><button class="btn btn-danger btn-sm delete-contact" id="delete-contact" data-id="${contact.id}">Delete</button></td>
+                <td><button class="btn btn-danger delete-contact" id="delete-contact" data-id="${contact.id}" onclick="Contacts.delete_contact(${contact.id})">Delete</button></td>
+                <td><button class="btn btn-primary edit-contact" id="edit-contact" data-id="${contact.id}" onclick="Contacts.edit_contact(${contact.id})">Edit</button></td>
             </tr>
             `;
         });

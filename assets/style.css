@@ -128,10 +128,15 @@ header {
 .contacts-list table thead {
     background-color: #000;
     color: #fff;
+    width: 100%;
 }
 
 .contacts-list table thead th {
     padding: 10px;
+}
+.contacts-list table tbody {
+    background-color: #fff;
+    width: 100%;
 }
 
 .contacts-list table tbody tr td {
@@ -160,8 +165,12 @@ header {
     gap: 20px;
 }
 
-.delete-contact {
+.btn-danger {
     color: red;
+}
+
+.btn-primary {
+    color: blue;
 }
 
 @media screen and (max-width:800){
