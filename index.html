@@ -15,8 +15,8 @@
             <h1>Contact Management System</h1>
             <div class="menu-items">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Contacts</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./contacts.html">Contacts</a></li>
                 </ul>
 
                 <div class="new-user-button">
@@ -27,22 +27,23 @@
             </div>
         </header>
 
+
         <div class="main-card">
 
-            <form action="" id="contact-form">
+            <form action="" id="contact-form" methd="POST">
                <div class="input-group">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" placeholder="Enter your name">
+                    <input type="text" name="name" id="contact-name" placeholder="Enter your name">
                </div>
 
                 <div class="input-group">
                     <label for="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" placeholder="Enter your phone">
+                    <input type="text" name="phone" id="contact-phone" placeholder="Enter your phone">
                 </div>
 
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" placeholder="Enter your email">
+                    <input type="text" name="email" id="contact-email" placeholder="Enter your email">
                 </div>
 
                 <div class="input-group">
@@ -51,18 +52,22 @@
             </form>
 
             <div class="contacts-list" id="contacts-list">
-                <li>
-                    <div class="contact">
-                        <div class="contact-info">
-                            <h3>John Doe</h3>
-                            <p> <span>Phone:</span> 1234567890</p>
-                            <p> <span>Email:</span> janedoe@mail.com </p>
-                        </div>
-                        <div class="contact-action">
-                            <img src="assets/images/1.jpg" alt="">
-                        </div>
-                    </div>
-                </li>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="contacts-table">
+                   
+                   
+                        
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

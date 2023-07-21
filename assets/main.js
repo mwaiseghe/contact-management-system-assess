@@ -72,21 +72,15 @@ class Contacts {
 
     static displayContacts() {
         let user_contacts = contacts_data
+        let contact_list = document.querySelector('#contacts-table');
         contact_list.innerHTML = '';
         user_contacts.forEach(contact => {
             contact_list.innerHTML += `
-            <li>
-                <div class="contact">
-                    <div class="contact-info">
-                        <h3>${contact.name}</h3>
-                        <p> <span>Phone:</span> ${contact.phone} </p>
-                        <p> <span>Email:</span> ${contact.email} </p>
-                    </div>
-                    <div class="contact-action">
-                        <img src="" alt="">
-                    </div>
-                </div>
-            </li>
+            <tr>
+                <td>${contact.name}</td>
+                <td>${contact.phone}</td>
+                <td>${contact.email}</td>
+            </tr>
             `;
         });
     }
@@ -133,7 +127,23 @@ class Contacts {
 
 
 
-// Users.user_events_listeners();
-Contacts.contact_events_listeners();
-Contacts.displayContacts(JSON.parse(localStorage.getItem('user'))[0].id);
+try{
+    Users.user_events_listeners();
+}catch(e){
+    console.log(e);
+}
+
+
+try {
+    Contacts.contact_events_listeners();
+}catch(e){
+    console.log(e);
+}
+
+try {
+    Contacts.displayContacts(JSON.parse(localStorage.getItem('user'))[0].id);
+}catch(e){
+    console.log(e);
+}
+
 

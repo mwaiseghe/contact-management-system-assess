@@ -15,8 +15,8 @@
             <h1>Contact Management System</h1>
             <div class="menu-items">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Contacts</a></li>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./contacts.html">Contacts</a></li>
                 </ul>
 
                 <div class="new-user-button">
@@ -52,17 +52,26 @@
             </form>
 
             <div class="contacts-list" id="contacts-list">
-                <li>
-                    <div class="contact">
-                        <div class="contact-info">
-                            <h3>John Doe</h3>
-                            <p> <span>Phone:</span> 1234567890</p>
-                            <p> <span>Email:</span> janedoe@mail.com </p>
-                        </div>
 
-                       
-                    </div>
-                </li>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="contacts-table">
+                   
+                           <tr>
+                                <td>John Doe</td>
+                                <td>1234567890</td>
+                                <td>janedoe@mail.com </td>
+                           </tr>
+                        
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
