@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Home</title>
+</head>
+<body>
+    
+
+    <div class="container">
+        <header>
+            <h1>Contact Management System</h1>
+            <div class="new-user-button">
+                <button class="btn">
+                    <a href="./user_form.html">New User</a>
+                </button>
+            </div>
+        </header>
+
+        <div class="main-card">
+
+            <form action="" id="contact-form">
+               <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter your name">
+               </div>
+
+                <div class="input-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" id="phone" placeholder="Enter your phone">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" placeholder="Enter your email">
+                </div>
+
+                <div class="input-group">
+                    <button type="submit" class="btn">Add Contact</button>
+                </div>
+            </form>
+
+            <div class="contacts-list" id="contacts-list">
+                <li>
+                    <div class="contact">
+                        <div class="contact-info">
+                            <h3>John Doe</h3>
+                            <p> <span>Phone:</span> 1234567890</p>
+                            <p> <span>Email:</span> janedoe@mail.com </p>
+                        </div>
+                        <div class="contact-action">
+                            <img src="assets/images/1.jpg" alt="">
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/main.js"></script>
+</body>
+</html>
