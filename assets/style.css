@@ -6,11 +6,11 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: #f4f4f4;
-    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
 }
+
 
 .container {
     width: 90%;
@@ -24,6 +24,8 @@ body {
 header {
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
 }
 
 .menu-items {
@@ -82,7 +84,8 @@ header {
 }
 
 .main-card {
-    
+    display: flex;
+    flex-direction: column;
 }
 
 .input-group {
@@ -90,12 +93,12 @@ header {
     flex-direction: column;
 }
 
-#contact-form {
+.contact-form {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     gap: 20px;
     padding: 20px;
-
+    flex-wrap: wrap;
 }
 
 #login_form {
@@ -119,6 +122,12 @@ header {
     align-items: center;
     width: 80%;
 }
+
+
+#contacts-list {
+    overflow-x: auto;
+}
+
 
 .contacts-list table {
     width: 100%;
@@ -173,23 +182,38 @@ header {
     color: blue;
 }
 
-@media screen and (max-width:800){
+@media screen and (max-width: 768px) {
     .container {
-        width: 100%;
+        overflow-x: hidden;
     }
 
+    header {
+        justify-content: end;
+        background-color: #000;
+        color: #fff;
+    }
+
+    #logo {
+        display: none;
+    }
+    
+
     .menu-items {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        justify-content: space-between;
     }
 
     .menu-items ul {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        justify-content: space-between;
+        color: #fff;
     }
 
     .menu-items ul li a {
         padding: 10px;
+        color: #ffffff;
     }
 
     .btn {
@@ -200,7 +224,7 @@ header {
         flex-direction: column;
     }
 
-    #contact-form {
+    #contact-form form{
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -209,5 +233,10 @@ header {
 
     #login_form {
         flex-direction: column;
+    }
+    
+
+    #logo {
+        display: hidden;
     }
 }
