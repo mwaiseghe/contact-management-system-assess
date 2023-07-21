@@ -65,6 +65,7 @@ class Users {
 
 class Contacts {
     constructor(name, phone, email, user_id) {
+        this.id = Contacts.getLastId() + 1;
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -94,12 +95,62 @@ class Contacts {
         localStorage.setItem('contacts', JSON.stringify(contacts_data));
         Contacts.displayContacts(user_id);
         alert('Contact added successfully');
+        contact_form.reset();
     }
 
-    static delete_contact(id) {
+    static edit_contact(id) {
+        let contact = contacts_data.filter(contact => contact.id == id);
+        let contact_form = document.querySelector('#contact-form');
+        contact_form.innerHTML = `
+        <div class="input-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="contact-name" placeholder="Enter your name" value="${contact[0].name}">
+        </div>
+
+        <div class="input-group">
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" id="contact-phone" placeholder="Enter your phone" value="${contact[0].phone}">
+        </div>
+
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="contact-email" placeholder="Enter your email" value="${contact[0].email}">
+        </div>
+
+        <div class="input-group">
+            <button id="update-button" type="submit" class="btn">Update</button>
+        </div>
+        `;
+        let update_button = document.querySelector('#update-button');
+        update_button.addEventListener('click', (e) => {
+            e.preventDefault();
+            let name = document.querySelector('#contact-name').value;
+            let phone = document.querySelector('#contact-phone').value;
+            let email = document.querySelector('#contact-email').value;
+            let user_id = JSON.parse(localStorage.getItem('user'))[0].id;
+            Contacts.update_contact(id, name, phone, email, user_id);
+        });
+
+    }
+
+    static update_contact(id, name, phone, email, user_id) {
+        let contact = contacts_data.filter(contact => contact.id != id);
+        let updated_contact = new Contacts(name, phone, email, user_id);
+        contact.push(updated_contact);
+        localStorage.setItem('contacts', JSON.stringify(contact));
+        alert('Contact updated successfully');
+        Contacts.displayContacts(user_id);
+        contact_form.reset();
+        reload_page();
+    }
+
+
+
+    static async delete_contact(id) {
         let contacts = contacts_data.filter(contact => contact.id != id);
         localStorage.setItem('contacts', JSON.stringify(contacts));
-        Contacts.displayContacts(JSON.parse(localStorage.getItem('user'))[0].id);
+        alert('Contact deleted successfully');
+        reload_page();
     }   
 
     static getLastId() {
@@ -121,7 +172,6 @@ class Contacts {
                 let user_id = JSON.parse(localStorage.getItem('user'))[0].id;
             }catch(e){
                 alert('You must be logged in to add a contact');
-            
             }
             Contacts.add_contact(name, phone, email, 1);
 
@@ -136,7 +186,7 @@ class Contacts {
 try{
     Users.user_events_listeners();
 }catch(e){
-    console.log(e);
+    console.log("not logged in")
 }
 
 
@@ -146,12 +196,13 @@ try {
     console.log(e);
 }
 
-try {
-    Contacts.displayContacts(JSON.parse(localStorage.getItem('user'))[0].id);
-}catch(e){
-    console.log(e);
-}
-
+window.addEventListener('load', (e) => {
+    try{
+        Contacts.displayContacts(JSON.parse(localStorage.getItem('user'))[0].id);
+    }catch(e){
+        console.log(e);
+    }
+});
 
 try {
     let contact_delete_buttons = document.querySelectorAll('.delete-contact');
@@ -164,4 +215,9 @@ try {
     );
 }catch(e){
     console.log(e);
+}
+
+
+function reload_page(){
+    location.reload();
 }
