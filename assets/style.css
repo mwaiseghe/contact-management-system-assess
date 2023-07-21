@@ -160,6 +160,9 @@ header {
     gap: 20px;
 }
 
+.delete-contact {
+    color: red;
+}
 
 @media screen and (max-width:800){
     .container {

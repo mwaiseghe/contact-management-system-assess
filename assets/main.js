@@ -80,6 +80,7 @@ class Contacts {
                 <td>${contact.name}</td>
                 <td>${contact.phone}</td>
                 <td>${contact.email}</td>
+                <td><button class="btn btn-danger btn-sm delete-contact" id="delete-contact" data-id="${contact.id}">Delete</button></td>
             </tr>
             `;
         });
@@ -93,14 +94,11 @@ class Contacts {
         alert('Contact added successfully');
     }
 
-    static delete_contact(user_id) {
-        let contact_name = document.querySelector('#contact-name').value;
-        let contact = contacts_data.filter(contact => contact.name == contact_name);
-        contacts_data.splice(contacts_data.indexOf(contact), 1);
-        localStorage.setItem('contacts', JSON.stringify(contacts_data));
+    static delete_contact(id) {
+        let contacts = contacts_data.filter(contact => contact.id != id);
+        localStorage.setItem('contacts', JSON.stringify(contacts));
         Contacts.displayContacts();
-        alert('Contact deleted successfully');
-    }
+    }   
 
     static getLastId() {
         let lastId = 0;
@@ -147,3 +145,15 @@ try {
 }
 
 
+try {
+    let contact_delete_buttons = document.querySelectorAll('.delete-contact');
+    contact_delete_buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            let id = e.target.dataset.id;
+            Contacts.delete_contact(id);
+        });
+    }
+    );
+}catch(e){
+    console.log(e);
+}
