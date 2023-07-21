@@ -99,6 +99,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 80%;
 }
 
 .contacts-list li {
@@ -106,10 +107,18 @@ header {
     margin: 0 10px;
 }
 
-#new-user-form {
+#user-form {
     display: flex;
     flex-direction: row;
     gap: 20px;
     padding: 20px;
+}
+
+
+.new-user-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }

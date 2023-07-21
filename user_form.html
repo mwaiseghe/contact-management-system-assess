@@ -20,30 +20,57 @@
                 </ul>
 
                 <div class="new-user-button">
-                    <button class="btn new-user-btn">
-                        <a href="">New User</a>
+                    <button id="login_button" class="btn new-user-btn">
+                        <a href="">Login</a>
                     </button>
                 </div>
             </div>
         </header>
 
         <div class="main-card">
-
-           <form action="" id="new-user-form">
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" placeholder="Enter your username">
+            <div class="login_form">
+                <div class="form-head">
+                    <h2>Login</h2>
                 </div>
+                <div id="">
+                    <form action="" id="login_form" method="POST">
+                        <div class="input-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" placeholder="Enter your username">
+                        </div>
+    
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Enter your password">
+                        </div>
+    
+                        <div class="input-group">
+                            <input class="btn" type="submit" value="Login">
+                        </div>
+                    </form>      
+               </div>
+            </div>
 
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Enter your password">
-                </div>
+           <div class="signup_form">
+            <div class="form-head">
+                <h2>Signup</h2>
+            </div>
+                <form action="" id="new-user-form" method="POST">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="new-username" placeholder="Enter your username">
+                    </div>
 
-                <div class="input-group">
-                    <input class="btn" type="submit" value="Create">
-                </div>
-           </form>  
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="new-password" placeholder="Enter your password">
+                    </div>
+
+                    <div class="input-group">
+                        <input class="btn" type="submit" value="Create">
+                    </div>
+                </form>      
+           </div>
         </div>
     </div>
 
