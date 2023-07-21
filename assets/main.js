@@ -64,14 +64,15 @@ class Users {
 
 
 class Contacts {
-    constructor(name, phone, email) {
+    constructor(name, phone, email, user_id) {
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.user_id = user_id;
     }
 
-    static displayContacts() {
-        let user_contacts = contacts_data
+    static displayContacts(user_id) {
+        let user_contacts = contacts_data.filter(contact => contact.user_id == user_id);
         let contact_list = document.querySelector('#contacts-table');
         contact_list.innerHTML = '';
         user_contacts.forEach(contact => {
@@ -90,14 +91,14 @@ class Contacts {
         let contact = new Contacts(name, phone, email, user_id);
         contacts_data.push(contact);
         localStorage.setItem('contacts', JSON.stringify(contacts_data));
-        Contacts.displayContacts();
+        Contacts.displayContacts(user_id);
         alert('Contact added successfully');
     }
 
     static delete_contact(id) {
         let contacts = contacts_data.filter(contact => contact.id != id);
         localStorage.setItem('contacts', JSON.stringify(contacts));
-        Contacts.displayContacts();
+        Contacts.displayContacts(JSON.parse(localStorage.getItem('user'))[0].id);
     }   
 
     static getLastId() {
@@ -115,8 +116,14 @@ class Contacts {
             let name = document.querySelector('#contact-name').value;
             let phone = document.querySelector('#contact-phone').value;
             let email = document.querySelector('#contact-email').value;
-            let user_id = JSON.parse(localStorage.getItem('user'))[0].id;
-            Contacts.add_contact(name, phone, email, user_id);
+            try{
+                let user_id = JSON.parse(localStorage.getItem('user'))[0].id;
+            }catch(e){
+                alert('You must be logged in to add a contact');
+            
+            }
+            Contacts.add_contact(name, phone, email, 1);
+
         });
     }
 }
